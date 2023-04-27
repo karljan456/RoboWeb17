@@ -1,0 +1,62 @@
+1. Runner - has methods 1) follow the line(left/right) 2) return to a line, when line is not available(left/right) 3) avoiding obstacle 4) making special routine
+2. State - 0)is on a track 1) follows the line right handed 2) follows the line left handed 3) out of the line (running left handed) 4) out of the line right handed 5) has obstacle 6) has no obstacle
+// checking red	
+	public void setRedMode()
+	{
+		sensor.setCurrentMode("Red");
+		sample = new float[sensor.sampleSize()];
+	}
+		public float getRed()
+	{
+		sensor.fetchSample(sample, 0);
+		
+		return sample[0];
+	}
+sensor.getRedMode();
+
+3.Routines:
+3.1 going forward - both wheels go same speed
+        EV3LargeRegulatedMotor motorA = new EV3LargeRegulatedMotor(MotorPort.A);
+        EV3LargeRegulatedMotor motorB = new EV3LargeRegulatedMotor(MotorPort.D);
+        motorA.setSpeed(500);
+        motorA.forward();    // starts rotation.
+        motorB.setSpeed(500);
+        motorB.forward();    // starts rotation.
+        
+        motorA.close();
+        motorB.close();
+
+3.2 turning left - should be configured well [-after state out of the line /do/ until follows the line is established-]
+
+3.3 turning right - should be configured well
+
+3.4 stiff turn right(while follow line left is implemented) in case of error
+
+3.5 stiff turn left(while follow line right is implemented) in case of error
+
+3.6 avoiding obstacle(going left)
+
+3.7 avoiding obstacle(going right)
+
+3.8 special routine - would be nice to 
+
+
+* note: running left or right can be implemented by: choosing direction on lcd screen beforehand / checking the line curve after encountering first turn
+
+in case of self configuring there should be extra routine after line is not seen by sensor that makes robot turn 90 degrees left:
+        motorA.rotate(200, true);
+        motorB.rotate(-200, true);
+
+4.1 if line is found during  turn it should go into left turning runner state
+4.2 if during 90 degree turn line is not found, robot should turn right until line is found and go into right turning state
+
+5.1 thread for running wheels
+5.2 thread for checking light sensor that thru object affects thread of running wheels
+5.3 thread for checking ultrasoinc sensor that thru object affects thread of running wheels and sets integer counter to check how many times obstacle is reached.
+
+left wheel - port a, right wheel - port b. light sensor - port 2, ultrasoinc - port 1.
+<<<<<<< Updated upstream
+
+123123
+=======
+>>>>>>> Stashed changes
