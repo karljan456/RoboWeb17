@@ -37,7 +37,7 @@ public class Motor extends Thread {
 			if (dataExchange.getObstaclesDetected() == false) {
 				//speed of the wheels is set according to amount of light, turning by giving slower speed to wheel in which side robot turns	
 				//accelerator variable is used to make robot go faster on darker segments of pathway 
-				multiplier = 850;
+				multiplier = dataExchange.getSpeed();
 
 				if (dataExchange.getAmountOfLight() > 0.09) {
 					accelerator = 1;
@@ -56,7 +56,7 @@ public class Motor extends Thread {
 				}
 				rightWheel.setSpeed(40 + dataExchange.getAmountOfLight() * multiplier * accelerator);
 
-				multiplier = 850;
+				multiplier = dataExchange.getSpeed();
 				if (dataExchange.getAmountOfLight() < 0.07) {
 					multiplier = multiplier / 6;
 				} else if (dataExchange.getAmountOfLight() < 0.1) {
