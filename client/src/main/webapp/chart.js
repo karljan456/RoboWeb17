@@ -1,37 +1,27 @@
+window.onload = function () {
 
-Chart.defaults.color = '#f5f5f5';
+    var chart = new CanvasJS.Chart("chartContainer", {
+        backgroundColor: "transparent",
+        animationEnabled: true,
+        title: {
+            text: "Minutes to complete the track per lap",
+            fontColor: "white"
 
-const chart = document.getElementById('robot');
-var xValues = ["2min", "2.5min", "3min", "5min", "2min"];
-var yValues = [2, 2.5, 3, 5, 2];
-var barColors = [
-    "#f8f8f8",
-    "#babaf8",
-    "#7c7cf8",
-    "#3e3ef8",
-    "#0000f8"
-];
-
-const robot = new Chart(chart, {
-    type: "doughnut",
-    data: {
-        labels: xValues,
-        datasets: [{
-            backgroundColor: barColors,
-            data: yValues,
+        },
+        data: [{
+            type: "doughnut",
+            startAngle: 60,
+            dataPoints: [
+                { y: 3, label: "1 lap" },
+                { y: 5, label: "2 lap" },
+                { y: 6, label: "3 lap" },
+                { y: 7, label: "4 lap" },
+                { y: 2, label: "5 lap" },
+                { y: 1, label: "6 lap" }
+            ],
+            indexLabelFontColor: "white"
         }]
-    },
-    options: {
-        plugins: {
-            title: {
-                display: true,
-                text: "Times to complete the track",
-                font:{
-                    size: 30,
-                    family: 'Raleway'
-                }
-            },
-        }
+    });
+    chart.render();
 
-    }
-});
+}
