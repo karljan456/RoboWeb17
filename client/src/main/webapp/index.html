@@ -6,71 +6,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="index.css">
-    <script type="module" src="node_modules/chart.js/dist/chart.js"></script>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/index.css">
+    <script type="text/javascript" src="canvasjs.min.js"></script>
+    <script type="text/javascript" src="chart.js">
+        
+    </script>
 
     <title>Lego Robot</title>
 </head>
 
 <body>
     <div class="container">
-        <div class="data col-md-6">
-            <h2>Average Speed: X m/s</h2>
-            <h2>Highest Speed: X m/s</h2>
-            <h2>Lowest Speed: X m/s</h2><br>
-            <h2>Time spent outside of track: X minutes</h2>
-            <h2>Average time to drive the track: X minutes</h2> <br>
-            <h2>Obstacle detected: X times</h2> <br>
+        <div class="controllers">
+            <h2>Speed</h2>
+            <label for="speed">Set speed:</label>
+            <input type="range" id="speed" min="1" max="100" value="1"><br>
 
-            <label for="myrange" class="label form-label"><b>Set the speed:</b></label>
-            <input type="range" min="1" max="10" value="1" class="from form-range" id="slider" list="trickmarks">
+            <h2>Current Speed: X m/s</h2><br>
 
-            <datalist id="trickmarks" class="datalist">
-                <option value="1" label="1"></option>
-                <option value="2" label="2"></option>
-                <option value="3" label="3"></option>
-                <option value="4" label="4"></option>
-                <option value="5" label="5"></option>
-                <option value="6" label="6"></option>
-                <option value="7" label="7"></option>
-                <option value="8" label="8"></option>
-                <option value="9" label="9"></option>
-                <option value="10" label="10"></option>
-            </datalist><br>
-
-            <div class="controllers">
-                <button id="btn_play_music" type="button" class="btn btn-secondary">Play Music</button><br> <br>
-                <button id="btn_flash_show" type="button" class="btn btn-primary">Start the Flash Show</button> <br>
-
-                <button id="btn_stop" type="button" class="btn btn-danger">STOP</button><br>
-
-                <div id="buttons" class="d-flex flex-column justify-content-between align-items-center">
-                    <div class="top">
-                        <img src="assets/icons/arrow-up.svg" id="btn_up" type="button" class="btn btn-light"></img>
-                    </div>
-                    <div class="middle mt-2">
-                        <img src="assets/icons/arrow-left.svg" id="btn_left" type="button" class="btn btn-light me-4">
-                        </img>
-                        <img src="assets/icons/arrow-right.svg" id="btn_right" type="button" class="btn btn-light">
-                        </img>
-                    </div>
-                    <div class="bottom mt-2">
-                        <img src="assets/icons/arrow-down.svg" id="btn_down" type="button" class="btn btn-light"></img>
-                    </div>
-
+            <h2>Navigation</h2><br>
+            <div id="buttons">
+                <button class="arrow-button" id="btn_up"><img src="assets/icons/arrow-up.svg" alt="Up arrow"></button>
+                <div class="middle">
+                    <button class="arrow-button" id="btn_left"><img src="assets/icons/arrow-left.svg"
+                            alt="Left arrow"></button>
+                    <button class="arrow-button" id="btn_right"><img src="assets/icons/arrow-right.svg"
+                            alt="Right arrow"></button>
                 </div>
+                <button class="arrow-button" id="btn_down"><img src="assets/icons/arrow-down.svg"
+                        alt="Down arrow"></button><br>
             </div>
-        </div>
-        <div class="container col-md-6">
-            <canvas id="robot" class="chart"></canvas>
 
+            <div class="btn">
+                <button class="play-button">Play Music</button><br>
+                <button class="stop-button">Stop</button>
+            </div>
 
         </div>
+
+        <div class="stats">
+            <h2>Speed Stats</h2><br>
+            <ul>
+                <li>Average Speed: X m/s</li><br>
+                <li>Highest Speed: X m/s</li><br>
+                <li>Lowest Speed: X m/s</li><br>
+            </ul>
+
+            <h2>Time Stats</h2><br>
+            <ul>
+                <li>Time spent outside of track: X minutes</li><br>
+                <li>Average time to drive the track: X minutes</li><br>
+            </ul>
+
+            <h2>Obstacle Detection</h2><br>
+            <ul>
+                <li>Obstacle detected: X times</li>
+            </ul>
+        </div>
+
+        <div id="chartContainer" style="height: 500px; width: 50%;"></div>
     </div>
-    <script src="chart.js">
-    </script>
-    <script type="module" src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script> 
+
 </body>
 
 </html>
