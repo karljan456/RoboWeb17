@@ -11,6 +11,7 @@
     <script type="text/javascript" src="chart.js">
         
     </script>
+    
 
     <title>Lego Robot</title>
 </head>
@@ -20,9 +21,9 @@
         <div class="controllers">
             <h2>Speed</h2>
             <label for="speed">Set speed:</label>
-            <input type="range" id="speed" min="1" max="100" value="1"><br>
+            <input type="range" id="speed" min="200" max="1300" value="1" step="50"><br>
 
-            <h2>Current Speed: X m/s</h2><br>
+            <h2 id="currentSpeed">Current Speed: 200 units</h2><br>
 
             <h2>Navigation</h2><br>
             <div id="buttons">
@@ -47,9 +48,9 @@
         <div class="stats">
             <h2>Speed Stats</h2><br>
             <ul>
-                <li>Average Speed: X m/s</li><br>
-                <li>Highest Speed: X m/s</li><br>
-                <li>Lowest Speed: X m/s</li><br>
+                <li>Average Speed: X units</li><br>
+                <li>Highest Speed: X units</li><br>
+                <li>Lowest Speed: X units</li><br>
             </ul>
 
             <h2>Time Stats</h2><br>
@@ -66,7 +67,7 @@
 
         <div id="chartContainer" style="height: 500px; width: 50%;"></div>
     </div>
-
+    <script type="text/javascript" src="index.js"></script>
 </body>
 
 </html>
