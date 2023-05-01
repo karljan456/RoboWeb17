@@ -144,7 +144,6 @@
     transition: background-color 0.2s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
   }
 
-
   
   .play-button:hover {
     background-color: #F9E9B3;
@@ -259,3 +258,5 @@
     #currentSpeed{font-size: 26px;}
   
     }
+
+

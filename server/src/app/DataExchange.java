@@ -5,6 +5,7 @@ public class DataExchange {
 	private boolean obstaclesDetected = false;
 	private float amountOfLight = 0;
 	private int counter = 0;
+	private int speed = 550;
 
 	public DataExchange() {
 
@@ -23,6 +24,14 @@ public class DataExchange {
 
 	public void setAmountOfLight(float amountOfLight) {
 		this.amountOfLight = amountOfLight;
+	}
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
 	}
 
 	public float getAmountOfLight() {
