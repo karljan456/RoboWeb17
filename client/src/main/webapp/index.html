@@ -5,8 +5,83 @@
     <title>Hello App Engine</title>
   </head>
 
+<<<<<<< Updated upstream
   <body>
     <h1>Hello App Engine!</h1>
+=======
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/index.css">
+    <script type="text/javascript" src="canvasjs.min.js"></script>
+    <script type="text/javascript" src="chart.js">
+        
+    </script>
+    
+    <title>Lego Robot</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="controllers">
+            <h2>Speed</h2>
+            <label for="speed">Set speed:</label>
+            <form>
+                <input type="range" id="speed" min="200" max="1300" value="1" step="50"><br>
+            </form>
+
+            <h2 id="currentSpeed">Current Speed: 200 units</h2><br>
+
+            <h2>Navigation</h2><br>
+            <div id="buttons">
+                <button class="arrow-button" id="btn_up"><img src="assets/icons/arrow-up.svg" alt="Up arrow"></button>
+                <div class="middle">
+                    <button class="arrow-button" id="btn_left"><img src="assets/icons/arrow-left.svg"
+                            alt="Left arrow"></button>
+                    <button class="arrow-button" id="btn_right"><img src="assets/icons/arrow-right.svg"
+                            alt="Right arrow"></button>
+                </div>
+                <button class="arrow-button" id="btn_down"><img src="assets/icons/arrow-down.svg"
+                        alt="Down arrow"></button><br>
+            </div>
+
+            <div class="btn">
+                <button class="play-button">Play Music</button><br>
+                <button class="stop-button">Stop</button>
+            </div>
+
+        </div>
+
+        <div id="chartContainer" style="height: 460px; width: 50%;"></div>
+
+        <div class="stats">
+            <h2>Speed Stats</h2><br>
+            <ul>
+                <li>Average Speed: X units</li><br>
+                <li>Highest Speed: X units</li><br>
+                <li>Lowest Speed: X units</li><br>
+            </ul>
+
+            <h2>Time Stats</h2><br>
+            <ul>
+                <li>Time spent outside of track: X minutes</li><br>
+                <li>Average time to drive the track: X minutes</li><br>
+            </ul>
+
+            <h2>Obstacle Detection</h2><br>
+            <ul>
+                <li>Obstacle detected: X times</li>
+            </ul>
+        </div>
+        
+    </div>
+
+    <script type="text/javascript" src="index.js"></script>
+
+</body>
+>>>>>>> Stashed changes
 
     <table>
       <tr>
