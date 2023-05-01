@@ -11,7 +11,7 @@
     <script type="text/javascript" src="chart.js">
         
     </script>
-    
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
 
     <title>Lego Robot</title>
 </head>
@@ -20,9 +20,10 @@
     <div class="container">
         <div class="controllers">
             <h2>Speed</h2>
+            <form method="post">
             <label for="speed">Set speed:</label>
             <input type="range" id="speed" min="200" max="1300" value="1" step="50"><br>
-
+			</form>
             <h2 id="currentSpeed">Current Speed: 200 units</h2><br>
 
             <h2>Navigation</h2><br>

@@ -5,7 +5,7 @@ public class DataExchange {
 	private boolean obstaclesDetected = false;
 	private float amountOfLight = 0;
 	private int counter = 0;
-	private int speed;
+	private int speed = 550;
 
 	public DataExchange() {
 
