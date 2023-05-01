@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-  <head>
-    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>Hello App Engine</title>
-  </head>
 
 <head>
     <meta charset="UTF-8">
@@ -24,7 +19,7 @@
         <div class="controllers">
             <h2>Speed</h2>
             <label for="speed">Set speed:</label>
-            <form>
+            <form method="post" action="../rest/robot/writespeed">
                 <input type="range" id="speed" min="200" max="1300" value="1" step="50"><br>
             </form>
 
@@ -75,17 +70,6 @@
     </div>
 
     <script type="text/javascript" src="index.js"></script>
-
-</body>
-
-    <table>
-      <tr>
-        <td colspan="2" style="font-weight:bold;">Available Servlets:</td>        
-      </tr>
-      <tr>
-        <td><a href='/hello'>The servlet</a></td>
-      </tr>
-    </table>
   </body>
 </html>
 
