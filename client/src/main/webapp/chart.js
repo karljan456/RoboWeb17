@@ -3,9 +3,11 @@ window.onload = function () {
     var chart = new CanvasJS.Chart("chartContainer", {
         backgroundColor: "transparent",
         animationEnabled: true,
+        animationDuration: 600,
         title: {
-            text: "Minutes to complete the track per lap",
-            fontColor: "white"
+            text: "Minutes to complete  the track per lap",
+            fontColor: "white",
+            fontFamily: "Arial, sans-serif",
 
         },
         data: [{
@@ -19,9 +21,9 @@ window.onload = function () {
                 { y: 2, label: "5 lap" },
                 { y: 1, label: "6 lap" }
             ],
-            indexLabelFontColor: "white"
+            indexLabelFontColor: "white",
         }]
+
     });
     chart.render();
-
 }

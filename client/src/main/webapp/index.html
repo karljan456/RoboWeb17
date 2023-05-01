@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>Hello App Engine</title>
+  </head>
 
 <head>
     <meta charset="UTF-8">
@@ -11,8 +15,7 @@
     <script type="text/javascript" src="chart.js">
         
     </script>
-    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-
+    
     <title>Lego Robot</title>
 </head>
 
@@ -20,10 +23,11 @@
     <div class="container">
         <div class="controllers">
             <h2>Speed</h2>
-            <form method="post">
             <label for="speed">Set speed:</label>
-            <input type="range" id="speed" min="200" max="1300" value="1" step="50"><br>
-			</form>
+            <form>
+                <input type="range" id="speed" min="200" max="1300" value="1" step="50"><br>
+            </form>
+
             <h2 id="currentSpeed">Current Speed: 200 units</h2><br>
 
             <h2>Navigation</h2><br>
@@ -46,6 +50,8 @@
 
         </div>
 
+        <div id="chartContainer" style="height: 460px; width: 50%;"></div>
+
         <div class="stats">
             <h2>Speed Stats</h2><br>
             <ul>
@@ -65,10 +71,21 @@
                 <li>Obstacle detected: X times</li>
             </ul>
         </div>
-
-        <div id="chartContainer" style="height: 500px; width: 50%;"></div>
+        
     </div>
+
     <script type="text/javascript" src="index.js"></script>
+
 </body>
 
+    <table>
+      <tr>
+        <td colspan="2" style="font-weight:bold;">Available Servlets:</td>        
+      </tr>
+      <tr>
+        <td><a href='/hello'>The servlet</a></td>
+      </tr>
+    </table>
+  </body>
 </html>
+
