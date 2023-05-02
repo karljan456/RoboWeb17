@@ -1,5 +1,6 @@
 package app;
 
+import data.ServerDataExchange;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.utility.Delay;
@@ -16,6 +17,7 @@ public class Motor extends Thread {
 	private static boolean exit = false;
 	private float multiplier;
 	private float accelerator;
+	private ServerDataExchange serverData;
 
 	public Motor(DataExchange dataExchange) {
 
@@ -25,6 +27,8 @@ public class Motor extends Thread {
 		rightWheel = new EV3LargeRegulatedMotor(MotorPort.D);
 
 		celeb = new Celebration();
+		
+		serverData = new ServerDataExchange();
 
 	}
 
@@ -37,34 +41,70 @@ public class Motor extends Thread {
 			if (dataExchange.getObstaclesDetected() == false) {
 				//speed of the wheels is set according to amount of light, turning by giving slower speed to wheel in which side robot turns	
 				//accelerator variable is used to make robot go faster on darker segments of pathway 
-				multiplier = dataExchange.getSpeed();
+				
+				int userSpeed = dataExchange.getUserSpeedSetting();
+				
+//				Speed from the user
+				if(userSpeed > 200) {
+					
+					userSpeed = dataExchange.getUserSpeedSetting();
+					
+					if (dataExchange.getAmountOfLight() > 0.33) {
+						userSpeed = userSpeed * 2 / 5;
+					} else if (dataExchange.getAmountOfLight() > 0.3) {
+						userSpeed = userSpeed * 3 / 5;
+					} else if (dataExchange.getAmountOfLight() > 0.25) {
+						userSpeed = userSpeed * 4 / 5;
+					} else if (dataExchange.getAmountOfLight() > 0.20) {
+						userSpeed = userSpeed * 5 / 6;
+					}
+					rightWheel.setSpeed(40 + dataExchange.getAmountOfLight() * userSpeed);
 
-				if (dataExchange.getAmountOfLight() > 0.09) {
-					accelerator = 1;
-				} else {
-					accelerator = 4;
-				}
+					userSpeed = dataExchange.getUserSpeedSetting();
+					if (dataExchange.getAmountOfLight() < 0.07) {
+						userSpeed = userSpeed / 6;
+					} else if (dataExchange.getAmountOfLight() < 0.1) {
+						userSpeed = userSpeed / 3;
+					} else if (dataExchange.getAmountOfLight() < 0.12) {
+						userSpeed = userSpeed * 3 / 5;
+					}
+					leftWheel.setSpeed(40 + dataExchange.getAmountOfLight() * userSpeed);
+					
+//					Default speed settings
+				}else {
+					
+					multiplier = dataExchange.getSpeed();
 
-				if (dataExchange.getAmountOfLight() > 0.33) {
-					multiplier = multiplier * 2 / 5;
-				} else if (dataExchange.getAmountOfLight() > 0.3) {
-					multiplier = multiplier * 3 / 5;
-				} else if (dataExchange.getAmountOfLight() > 0.25) {
-					multiplier = multiplier * 4 / 5;
-				} else if (dataExchange.getAmountOfLight() > 0.20) {
-					multiplier = multiplier * 5 / 6;
-				}
-				rightWheel.setSpeed(40 + dataExchange.getAmountOfLight() * multiplier * accelerator);
+					if (dataExchange.getAmountOfLight() > 0.09) {
+						accelerator = 1;
+					} else {
+						accelerator = 4;
+					}
 
-				multiplier = dataExchange.getSpeed();
-				if (dataExchange.getAmountOfLight() < 0.07) {
-					multiplier = multiplier / 6;
-				} else if (dataExchange.getAmountOfLight() < 0.1) {
-					multiplier = multiplier / 3;
-				} else if (dataExchange.getAmountOfLight() < 0.12) {
-					multiplier = multiplier * 3 / 5;
+					if (dataExchange.getAmountOfLight() > 0.33) {
+						multiplier = multiplier * 2 / 5;
+					} else if (dataExchange.getAmountOfLight() > 0.3) {
+						multiplier = multiplier * 3 / 5;
+					} else if (dataExchange.getAmountOfLight() > 0.25) {
+						multiplier = multiplier * 4 / 5;
+					} else if (dataExchange.getAmountOfLight() > 0.20) {
+						multiplier = multiplier * 5 / 6;
+					}
+					rightWheel.setSpeed(40 + dataExchange.getAmountOfLight() * multiplier * accelerator);
+
+					multiplier = dataExchange.getSpeed();
+					if (dataExchange.getAmountOfLight() < 0.07) {
+						multiplier = multiplier / 6;
+					} else if (dataExchange.getAmountOfLight() < 0.1) {
+						multiplier = multiplier / 3;
+					} else if (dataExchange.getAmountOfLight() < 0.12) {
+						multiplier = multiplier * 3 / 5;
+					}
+					leftWheel.setSpeed(40 + dataExchange.getAmountOfLight() * multiplier * accelerator);
+					
 				}
-				leftWheel.setSpeed(40 + dataExchange.getAmountOfLight() * multiplier * accelerator);
+				
+				
 
 			}
 
