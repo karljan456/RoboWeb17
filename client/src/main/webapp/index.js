@@ -1,20 +1,24 @@
-var xmlhttp=new XMLHttpRequest();
-
 const slider = document.getElementById("speed");
-
 const speedText = document.getElementById("currentSpeed");
 
 speedText.innerHTML = "Current Speed: " + slider.value + " units";
 
 slider.addEventListener("input", function() {
+    var xmlhttp = new XMLHttpRequest();
+    var url = "../rest/robot/writespeed";
+    var data = "speed=" + slider.value;
 
-//	var jsonspeed = JSON.parse(slider.value);
-	
     speedText.innerHTML = "Current Speed: " + slider.value + " units";
-    
-    xmlhttp.open("POST", "../rest/robot/writespeed", true);
-    xmlhttp.send();	
 
+    xmlhttp.open("POST", url, true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            console.log(xmlhttp.responseText);
+        }
+    };
+
+    xmlhttp.send(data);
 });
 
 for (let e of document.querySelectorAll('input[type="range"].slider-progress')) {

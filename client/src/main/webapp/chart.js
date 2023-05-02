@@ -24,12 +24,12 @@ window.onload = function () {
             type: "doughnut",
             startAngle: 60,
             dataPoints: [
-                { y: 3, label: "1 lap" },
-                { y: 5, label: "2 lap" },
-                { y: 6, label: "3 lap" },
-                { y: 7, label: "4 lap" },
-                { y: 2, label: "5 lap" },
-                { y: 1, label: "6 lap" }
+                { y: 1, label: "3 minutes" },
+                { y: 2, label: "5 minutes" },
+                { y: 3, label: "6 minutes" },
+                { y: 4, label: "7 minutes" },
+                { y: 5, label: "2 minutes" },
+                { y: 6, label: "2 minutes" }
             ],
             indexLabelFontColor: "white",
         }]
