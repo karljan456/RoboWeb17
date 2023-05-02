@@ -42,7 +42,7 @@ public class Main {
 
 			try {
 
-				url = new URL("http://192.168.1.160:8080/rest/robot/getspeed");
+				url = new URL("http://192.168.0.116:8080/rest/robot/getspeed");
 
 				conn = (HttpURLConnection) url.openConnection();
 				InputStream is = null;
