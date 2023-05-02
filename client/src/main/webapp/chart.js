@@ -1,13 +1,23 @@
 window.onload = function () {
+    CanvasJS.addColorSet("greenShades",
+                [//colorSet Array
+
+                "#6756B3",
+                "#3361BD",
+                "#5582B8",
+                "#63A8BF",
+                "#4245B3"                
+                ]);
 
     var chart = new CanvasJS.Chart("chartContainer", {
+        colorSet: "greenShades",
         backgroundColor: "transparent",
         animationEnabled: true,
         animationDuration: 600,
         title: {
-            text: "Minutes to complete  the track per lap",
+            text: "Minutes to complete the track per lap",
             fontColor: "white",
-            fontFamily: "Arial, sans-serif",
+            fontFamily: '"Segoe UI", Arial, sans-serif',
 
         },
         data: [{
@@ -23,6 +33,8 @@ window.onload = function () {
             ],
             indexLabelFontColor: "white",
         }]
+
+        
 
     });
     chart.render();
