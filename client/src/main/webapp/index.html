@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -12,20 +13,23 @@
     </script>
     
     <title>Lego Robot</title>
+    <link rel="icon" href="assets/icons/icon.png"
+    type = "image/x-icon">
+
 </head>
 
 <body>
     <div class="container">
         <div class="controllers">
-            <h2>Speed</h2>
+            <h2 class="navigation-speed-title">Speed</h2>
             <label for="speed">Set speed:</label>
             <form method="post">
                 <input type="range" id="speed" min="200" max="1300" value="1" step="50"><br>
             </form>
 
-            <h2 id="currentSpeed">Current Speed: 200 units</h2><br>
+            <h2 id="currentSpeed"></h2><br>
 
-            <h2>Navigation</h2><br>
+            <h2 class="navigation-speed-title">Navigation</h2><br>
             <div id="buttons">
                 <button class="arrow-button" id="btn_up"><img src="assets/icons/arrow-up.svg" alt="Up arrow"></button>
                 <div class="middle">
@@ -39,6 +43,7 @@
             </div>
 
             <div class="btn">
+                <button class="lights-button">Flash Lights</button><br>
                 <button class="play-button">Play Music</button><br>
                 <button class="stop-button">Stop</button>
             </div>
@@ -48,20 +53,20 @@
         <div id="chartContainer"></div>
 
         <div class="stats">
-            <h2>Speed Stats</h2><br>
+            <h2 class="header-stats">Speed Stats</h2><br>
             <ul>
                 <li>Average Speed: X units</li><br>
                 <li>Highest Speed: X units</li><br>
                 <li>Lowest Speed: X units</li><br>
             </ul>
 
-            <h2>Time Stats</h2><br>
+            <h2 class="header-stats" >Time Stats</h2><br>
             <ul>
                 <li>Time spent outside of track: X minutes</li><br>
                 <li>Average time to drive the track: X minutes</li><br>
             </ul>
 
-            <h2>Obstacle Detection</h2><br>
+            <h2 class="header-stats">Obstacle Detection</h2><br>
             <ul>
                 <li>Obstacle detected: X times</li>
             </ul>
