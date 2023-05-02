@@ -31,7 +31,7 @@ public class Main {
 		avoider = new AvoidObstacles(dataExchange);
 		motor = new Motor(dataExchange);
 		
-		serverData = new ServerDataExchange();
+		serverData = new ServerDataExchange(dataExchange);
 
 		avoider.start();
 
@@ -40,43 +40,10 @@ public class Main {
 		serverData.start();
 
 		motor.start();
-
-//		URL url = null;
-//		HttpURLConnection conn = null;
-//		InputStreamReader isr = null;
-//		BufferedReader br = null;
-//		String s = null;
+		
 
 		while (dataExchange.getCounter() != 2) {
 
-//			try {
-//
-//				url = new URL("http://192.168.0.116:8080/rest/robot/getspeed");
-//
-//				conn = (HttpURLConnection) url.openConnection();
-//				InputStream is = null;
-//				
-//				try {
-//					is = conn.getInputStream();
-//				} catch (Exception e) {
-//					System.out.println("Exception conn.getInputSteam()");
-//					e.printStackTrace();
-//					System.out.println("Cannot get InputStream!");
-//				}
-//				isr = new InputStreamReader(is);
-//				br = new BufferedReader(isr);
-//				String symb ="0";
-//				while ((s = br.readLine()) != null) {
-//					System.out.println(s);
-//					symb = symb + s ;
-//				}
-//				int spd = Integer.parseInt(symb);
-//				dataExchange.setSpeed(spd);
-//						
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//				System.out.println("Some problem!");
-//			}
 		}
 
 //		Giving some time for the celebration

@@ -13,24 +13,39 @@ import lejos.hardware.Button;
 
 public class ServerDataExchange extends Thread{
 	
-	public String speed = "0";
+	private String speed = "0";
 	private URL urlSpeed = null;
 	private HttpURLConnection conn;
 	private InputStream inputStream;
 	private InputStreamReader inputReader;
 	private BufferedReader reader;
-	private String speedSettings = null;
-	private DataExchange dataExchange = new DataExchange();
+	private String speedSettings;
+	private DataExchange dataExchange;
+	
+	
+	public ServerDataExchange(DataExchange dataExchange) {
+		
+		this.dataExchange = dataExchange;
+		
+	}
+	
 
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		
+		sendServerSpeedData("http://192.168.1.160:8080/rest/robot/getspeed");
+		
+	}
+	
+	
+	public void sendServerSpeedData(String url) {
+		
 		while(true) {
 			
 			try {
 				
-				urlSpeed = new URL("http://192.168.1.160:8080/rest/robot/getspeed");
+				urlSpeed = new URL(url);
 				
 				conn = (HttpURLConnection) urlSpeed.openConnection();
 				
@@ -56,7 +71,7 @@ public class ServerDataExchange extends Thread{
 					
 					System.out.println(speed);
 					
-					speedSettings = speed + speedSettings;
+					speedSettings = speed;
 				
 				}	
 				int userSpeedSetting = Integer.parseInt(speedSettings);
@@ -74,8 +89,6 @@ public class ServerDataExchange extends Thread{
 			}
 			
 		}
-		
-
 		
 	}
 

@@ -28,7 +28,7 @@ public class Motor extends Thread {
 
 		celeb = new Celebration();
 		
-		serverData = new ServerDataExchange();
+		serverData = new ServerDataExchange(dataExchange);
 
 	}
 
