@@ -167,7 +167,9 @@
 
 #chartContainer{
   position: absolute;
-  right: -6%;
+  right: -2.5%;
+  width: 50%;
+  height: 500px;
 }
 
 #speed {
