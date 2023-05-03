@@ -23,6 +23,7 @@ public class ServerDataExchange extends Thread{
 	private DataExchange dataExchange;
 	
 	
+	
 	public ServerDataExchange(DataExchange dataExchange) {
 		
 		this.dataExchange = dataExchange;

@@ -42,7 +42,7 @@ public class Main {
 		motor.start();
 		
 
-		while (dataExchange.getCounter() != 2) {
+		while (dataExchange.getStopButton() != 0) {
 
 		}
 
