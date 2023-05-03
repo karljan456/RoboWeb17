@@ -1,7 +1,6 @@
 package services;
 
 import data.Param;
-import data.RoboData;
 
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
@@ -21,9 +20,6 @@ import javax.ws.rs.QueryParam;
 @Path("/robot")
 public class Robot {
 
-	
-
-	
 	@POST
 	@Path("/writespeed")
 	@Consumes("application/x-www-form-urlencoded")
@@ -38,6 +34,24 @@ public class Robot {
 	public int getspeed() {
 		return Param.speed;
 	}
+	
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/writecommand")
+	public void writeCommand(@FormParam("command") String command) {
+		int cmd = Integer.valueOf(command);
+		Param.command = cmd;
+		
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/getcommand")
+	public int getCommand() {
+		return Param.command;
+	}
+	
+
 	
 //	@GET
 //	@Path("/robodata")
