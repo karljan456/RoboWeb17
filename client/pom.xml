@@ -37,7 +37,7 @@
                         
                 <artifactId>libraries-bom</artifactId>
                         
-                <version>26.12.0</version>
+                <version>26.13.0</version>
                         
                 <type>pom</type>
                         
@@ -92,7 +92,9 @@
             <artifactId>appengine-api-1.0-sdk</artifactId>
             <version>2.0.13</version>
         </dependency>
-        <!-- BEGIN: Added by Pena -->
+        
+        
+<!-- BEGIN: Added by Pena -->
 
 <!-- This is needed in the Google Cloud side to be able to connect to a database -->
     <dependency>
@@ -164,7 +166,10 @@
 	    <version>1.1.1</version>
 	</dependency>
 
-<!-- END: Added by Pena -->     
+<!-- END: Added by Pena -->        
+        
+        
+        
         <!-- Test Dependencies -->
             
         <dependency>
