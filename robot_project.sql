@@ -29,9 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `ControlSettings` (
   `id` int NOT NULL,
-  `speed` int NOT NULL,
   `command` int NOT NULL,
-  `song` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -42,11 +40,8 @@ CREATE TABLE `ControlSettings` (
 
 CREATE TABLE `RoboData` (
   `id` int NOT NULL,
-  `start_time` timestamp NOT NULL,
   `end_time` timestamp NOT NULL,
-  `speed` int NOT NULL,
   `obstacle_detection` int NOT NULL,
-  `laps_count` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
