@@ -22,10 +22,10 @@ slider.addEventListener("input", function () {
     xmlhttp.send(data);
 });
 
-function sendParameters(command) {
+function sendParameters(command, name) {
     var xmlhttp = new XMLHttpRequest();
     var url = "../rest/robot/writecommand";
-    var data = "command=" + command;
+    var data = "command=" + command + "&name=" + name;
 
     xmlhttp.open("POST", url, true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

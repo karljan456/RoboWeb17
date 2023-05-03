@@ -38,9 +38,10 @@ public class Robot {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/writecommand")
-	public void writeCommand(@FormParam("command") String command) {
+	public void writeCommand(@FormParam("command") String command, @FormParam("name") String name) {
 		int cmd = Integer.valueOf(command);
 		Param.command = cmd;
+		Param.command_name = name;
 		
 	}
 	
@@ -49,6 +50,13 @@ public class Robot {
 	@Path("/getcommand")
 	public int getCommand() {
 		return Param.command;
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/getcommandname")
+	public String getCommandName() {
+		return Param.command_name;
 	}
 	
 
