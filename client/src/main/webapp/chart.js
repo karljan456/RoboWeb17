@@ -1,15 +1,16 @@
 window.onload = function () {
-    CanvasJS.addColorSet("greenShades",
+    CanvasJS.addColorSet("purpleShades",
                 [//colorSet Array
                 "#6756B3",
                 "#3361BD",
                 "#5582B8",
                 "#63A8BF",
-                "#4245B3"                
+                "#4245B3",
+                "#534882"                
                 ]);
 
     var chart = new CanvasJS.Chart("chartContainer", {
-        colorSet: "greenShades",
+        colorSet: "purpleShades",
         backgroundColor: "transparent",
         animationEnabled: true,
         animationDuration: 600,
