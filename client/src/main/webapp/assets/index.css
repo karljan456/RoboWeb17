@@ -25,7 +25,7 @@ h2, label {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-top: 50px;
+  margin-top: 30px;
   padding: 0 30px;
   max-width: 100%;
   overflow-x: hidden;
@@ -35,12 +35,13 @@ h2, label {
   background-image: linear-gradient(-0.10turn, #2b4a65, #442d77);
   padding: 15px;
   border-radius: 20px;
-  box-shadow: 10px -10px 1000px 10px #1e384d;
-  position: absolute;
+  box-shadow: 0 0 40px #1d2c39,
+  0 0 100px #1e384d;
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin-right: 30px;
-  left: 10%;
+  margin-right: 130px;
+  left: 5%;
 }
 
 label {
@@ -102,7 +103,7 @@ input[type="range"] {
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  padding-bottom: 40px;
+  padding-bottom: 30px;
 }
 
 #btn_up {
@@ -115,20 +116,31 @@ margin-bottom: 10px;
   margin: 10px 40px;
 }
 
+.btn{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 auto;
+}
+
 .stop-button {
   background-color:  #7a4cb5;
   border: 2px solid  #7a4cb5;
-  border-radius: 30px;
+  border-radius: 40px;
   box-shadow: 2px 2px 2px #302d4e;
-  color: #241a27;
+  color: #2e1f33;
   cursor: pointer;
   display: inline-block;
-  font-size: 1em;
+  font-size: 1.7em;
   margin: 10px;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+  grid-row-start: 1;
+  grid-column-start: 2;
+  grid-row-end: 3;
+  grid-column-end: 3;
   font-weight: 600;
   transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
@@ -160,6 +172,10 @@ margin-bottom: 10px;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  grid-row-end: 2;
+  grid-column-end: 2;
   text-transform: uppercase;
   transition: background-color 0.2s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
@@ -192,6 +208,10 @@ margin-bottom: 10px;
   margin: 10px;
   padding: 10px 20px;
   text-align: center;
+  grid-row-start: 2;
+  grid-column-start: 1;
+  grid-row-end: 3;
+  grid-column-end: 2;
   text-decoration: none;
   text-transform: uppercase;
   transition: background-color 0.2s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
@@ -220,17 +240,18 @@ margin-bottom: 10px;
 }
 
 .stats{
-  position: absolute;
-  left: 35%;
+  position: relative;
   font-size: 25px;
   line-height: 0.9;
+  margin-top: 30px;
+  padding-top: 30px;
 }
 
 #chartContainer{
   position: absolute;
   right: -2.5%;
   width: 50%;
-  height: 500px;
+  height: 30rem;
 }
 
 #speed {
@@ -393,25 +414,26 @@ input[type=range].styled-slider.slider-progress::-ms-fill-lower {
   
 
 /* for tablets and eclipse */
-@media only screen and (max-width: 1350px) {
+@media only screen and (max-width: 1400px) {
 
 #chartContainer{
-  position: relative;
-  flex-wrap: wrap;
-  height: 200px;
-  width: 200px;
-  margin-top: 10%;
-  right: -50%;
+  display: relative;
+  margin: 0 auto;
+  font-size: 26px;
+  margin-top: 750px;
+  width: 80%;
+  left: -30%;
+  height: auto;
+}
+
+.canvasjs-chart-canvas{
+  position:relative;
 }
 
 .stats{
-  display: left;
-  margin: 0 auto;
-  left: 10%;
-  font-size: 26px;
-  margin-top: 700px;
-  width: 80%;
-  height: auto;
+  position: relative;
+  height: 31rem;
+  width: auto;
 }
 
 input[type="range"]::-moz-range-thumb {
@@ -424,37 +446,43 @@ input[type="range"]::-moz-range-thumb {
 #currentSpeed{font-size: 26px;}
 }
 
+.middle{
+  width: 280px;
+}
+
 
 
 /* for big phones */
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 600px) {
+  .controllers {
+    margin-right: 20px;
+    margin-left: -15px;
+  }
 
 .container{
   display: center;
 }
 
 #chartContainer{
-  position: static;
-  display: center;
-  margin: auto;
-  width: 300px !important;
-  height: 400px !important;
-  text-align: center;
-  overflow: hidden;
-  margin-top: 380% !important;
-  overflow-x: hidden;
+  display: static;
+  font-size: 26px;
+  margin-top: 1350px;
+  width: 80%;
+  left: 0%;
+  height: auto;
 }
 
 .canvasjs-chart-canvas{
-  position:absolute;
+  position:relative;
 }
 
 .stats{
-  display: left;
+  display: center;
+  position: absolute;
   margin: 0 auto;
-  left: 10%;
-  font-size: 26px;
-  margin-top: 700px;
+  font-size: 24px;
+  margin-top: 43rem;
+  margin-left: 35px;
   width: 80%;
   height: auto;
 }
@@ -470,143 +498,49 @@ input[type="range"]::-moz-range-thumb {
 }
 
 /* for small phones */
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 350px) {
+
+  .controllers {
+    flex-direction: column;
+    margin-right: 0 auto;
+    margin-left: 0 auto;
+    left: 0%;
+  }
 
   .container{
     display: center;
   }
   
   #chartContainer{
-    position: static;
-    display: center;
-    margin: auto;
-    width: 300px !important;
-    height: 400px !important;
-    text-align: center;
-    overflow: hidden;
-    margin-top: 470% !important;
-    overflow-x: hidden;
+    display: static;
+    font-size: 26px;
+    margin-top: 1380px;
+    width: 80%;
+    left: 0%;
+    height: auto;
   }
   
   .canvasjs-chart-canvas{
-    position:absolute;
+    position:relative;
   }
-
-  .controllers {
-    margin-right: 0px;
-    left: 5%;
-  }
-
-  .header-stats {
-    font-size: 30px;
-    margin-top:70px;
-  }
-
-  .arrow-button {
-  display: inline-flexbox;
-  align-items: center;
-  justify-content: center;
-  position: sticky;
-  margin: 10px;
-  outline: none;
-  }
-
-  #buttons {
-    position: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-  }
-
-  .middle{
-    width: 280px;
-  }
-  
   
   .stats{
-    display: left;
+    display: center;
+    position: absolute;
     margin: 0 auto;
-    left: 10%;
-    font-size: 26px;
-    margin-top: 700px;
+    font-size: 24px;
+    margin-top: 43rem;
+    margin-left: 20px;
     width: 80%;
     height: auto;
-    line-height: 0.9;
+  }
+  
+  .btn{
+    position: center;
+    display: center;
+    margin: 0 auto;
   }
   
   #currentSpeed{font-size: 26px;}
   
   }
-
-  /* for very small phones */
-@media only screen and (max-width: 300px) {
-
-  .container{
-    display: center;
-  }
-  
-  #chartContainer{
-    position: static;
-    display: center;
-    margin: auto;
-    width: 300px !important;
-    height: 400px !important;
-    text-align: center;
-    overflow: hidden;
-    margin-top: 480% !important;
-    overflow-x: hidden;
-  }
-  
-  .canvasjs-chart-canvas{
-    position:absolute;
-  }
-
-  .controllers {
-    margin-right: 0px;
-    left: 5%;
-  }
-
-  .header-stats {
-    font-size: 30px;
-    margin-top:70px;
-  }
-
-  .arrow-button {
-  display: inline-flexbox;
-  align-items: center;
-  justify-content: center;
-  position: center;
-  margin: 10px;
-  outline: none;
-  }
-
-  #buttons {
-    position: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-  }
-
-  .middle{
-    width: 280px;
-  }
-  
-  
-  .stats{
-    display: left;
-    margin: 0 auto;
-    left: 10%;
-    font-size: 26px;
-    margin-top: 700px;
-    width: 80%;
-    height: auto;
-    line-height: 0.9;
-  }
-  
-  }
-
-
