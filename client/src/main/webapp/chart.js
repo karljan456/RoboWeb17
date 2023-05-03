@@ -16,7 +16,7 @@ window.onload = function () {
         animationDuration: 600,
         title: {
             text: "Minutes to complete the track per lap",
-            fontColor: "white",
+            fontColor: "#b3b3f7",
             fontFamily: '"Segoe UI", Arial, sans-serif',
 
         },
