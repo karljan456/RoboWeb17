@@ -43,9 +43,14 @@
             </div>
 
             <div class="btn">
-                <button class="lights-button">Flash Lights</button><br>
-                <button class="play-button">Play Music</button><br>
-                <button class="stop-button">Stop</button>
+                <form method="post">
+                    <button id="lightsButton">Flash Lights</button><br>
+                    <button id="danceButton">Dance</button><br>
+                    <button id="pauseButton">Pause</button><br>
+                    <button id="continueButton">Continue</button><br>
+                    <button id="playButton">Play Music</button><br>
+                    <button id="stopButton">Stop</button>
+                </form>
             </div>
 
         </div>
@@ -53,17 +58,9 @@
         <div id="chartContainer"></div>
 
         <div class="stats">
-            <h2 class="header-stats">Speed Stats</h2><br>
-            <ul>
-                <li>Average Speed: X degrees/sec</li><br>
-                <li>Highest Speed: X degrees/sec</li><br>
-                <li>Lowest Speed: X degrees/sec</li><br>
-            </ul>
-
             <h2 class="header-stats" >Time Stats</h2><br>
             <ul>
                 <li>Time spent outside of track: X seconds</li><br>
-                <li>Average time to drive the track: X seconds</li><br>
             </ul>
 
             <h2 class="header-stats">Obstacle Detection</h2><br>
