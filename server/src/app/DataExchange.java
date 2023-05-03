@@ -6,6 +6,8 @@ public class DataExchange {
 	private float amountOfLight = 0;
 	private int counter = 0;
 	private int speed = 550;
+	
+	private int userSpeedSetting;
 
 	public DataExchange() {
 
@@ -45,8 +47,18 @@ public class DataExchange {
 	public void setCounter(int counter) {
 		this.counter = counter;
 	}
-
-
+	
+	public int getUserSpeedSetting() {
+		
+		return userSpeedSetting;
+		
+	}
+	
+	public void setUserSpeedSetting(int userSpeedSetting) {
+		
+		this.userSpeedSetting = userSpeedSetting;
+		
+	}
 
 
 }

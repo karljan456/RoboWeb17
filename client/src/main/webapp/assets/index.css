@@ -342,7 +342,7 @@ input[type=range].styled-slider::-moz-range-thumb {
   width: 2em;
   height: 2em;
   border-radius: 1em;
-  background: #9085F2;
+  background: #9085F2 !important;
   border: none;
   box-shadow: 0 0 2px black;
 }

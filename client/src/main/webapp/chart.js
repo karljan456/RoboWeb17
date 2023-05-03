@@ -1,7 +1,6 @@
 window.onload = function () {
     CanvasJS.addColorSet("purpleShades",
                 [//colorSet Array
-
                 "#6756B3",
                 "#3361BD",
                 "#5582B8",
