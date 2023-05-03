@@ -27,8 +27,9 @@ public class Robot {
 	@POST
 	@Path("/writespeed")
 	@Consumes("application/x-www-form-urlencoded")
-	public void writeSpeed(@FormParam("speed") int data) {
-		Param.speed = data;
+	public void writeSpeed(@FormParam("speed") String data) {
+		int speed = Integer.valueOf(data);
+		Param.speed = speed;
 	}
 	
 	@GET
