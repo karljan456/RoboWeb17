@@ -8,6 +8,7 @@ public class Motor extends Thread {
 	private static EV3LargeRegulatedMotor rightWheel;
 	private static int counter = 0;
 	private static Celebration celeb;
+	private float multiplier;
 	private float accelerator;
 	public Motor(DataExchange dataExchange) {
 		this.dataExchange = dataExchange;
@@ -23,37 +24,36 @@ public class Motor extends Thread {
 			if (dataExchange.getCommand() == 1) {
 				// Obstacle detection check
 				if (dataExchange.getObstaclesDetected() == false) {
-					// speed of the wheels is set according to amount of light, turning by giving
-					// slower speed to wheel in which side robot turns
-					// accelerator variable is used to make robot go faster on darker segments of
-					// pathway
-					int userSpeed = dataExchange.getUserSpeedSetting();
-//				Speed from the user
+					multiplier = dataExchange.getUserSpeedSetting();
+
 					if (dataExchange.getAmountOfLight() > 0.09) {
 						accelerator = 1;
 					} else {
 						accelerator = 4;
 					}
-					userSpeed = dataExchange.getUserSpeedSetting();
+
 					if (dataExchange.getAmountOfLight() > 0.33) {
-						userSpeed = userSpeed * 2 / 5;
+						multiplier = multiplier * 2 / 5;
 					} else if (dataExchange.getAmountOfLight() > 0.3) {
-						userSpeed = userSpeed * 3 / 5;
+						multiplier = multiplier * 3 / 5;
 					} else if (dataExchange.getAmountOfLight() > 0.25) {
-						userSpeed = userSpeed * 4 / 5;
+						multiplier = multiplier * 4 / 5;
 					} else if (dataExchange.getAmountOfLight() > 0.20) {
-						userSpeed = userSpeed * 5 / 6;
+						multiplier = multiplier * 5 / 6;
 					}
-					rightWheel.setSpeed(40 + dataExchange.getAmountOfLight() * userSpeed * accelerator);
-					userSpeed = dataExchange.getUserSpeedSetting();
+					rightWheel.setSpeed(40 + dataExchange.getAmountOfLight() * multiplier * accelerator);
+
+					multiplier = dataExchange.getUserSpeedSetting();
+					
 					if (dataExchange.getAmountOfLight() < 0.07) {
-						userSpeed = userSpeed / 6;
+						multiplier = multiplier / 6;
 					} else if (dataExchange.getAmountOfLight() < 0.1) {
-						userSpeed = userSpeed / 3;
+						multiplier = multiplier / 3;
 					} else if (dataExchange.getAmountOfLight() < 0.12) {
-						userSpeed = userSpeed * 3 / 5;
+						multiplier = multiplier * 3 / 5;
 					}
-					leftWheel.setSpeed(40 + dataExchange.getAmountOfLight() * userSpeed * accelerator);
+					leftWheel.setSpeed(40 + dataExchange.getAmountOfLight() * multiplier * accelerator);
+					
 				}
 				else {
 					counter++;
@@ -91,36 +91,45 @@ public class Motor extends Thread {
 			else if (dataExchange.getCommand() == 2) {
 				leftWheel.stop();
 				rightWheel.stop();
-				rightWheel.setSpeed(300);
-				leftWheel.setSpeed(300);
-				rightWheel.rotate(200, true);
-				leftWheel.rotate(-200, true);
+				leftWheel.setSpeed(100);
+				leftWheel.backward();
+				Delay.msDelay(300);
+				leftWheel.stop();
 			} else if (dataExchange.getCommand() == 3) {
 				leftWheel.stop();
 				rightWheel.stop();
-				rightWheel.setSpeed(300);
-				leftWheel.setSpeed(300);
-				rightWheel.rotate(200, true);
-				leftWheel.rotate(200, true);
+				rightWheel.setSpeed(100);
+				leftWheel.setSpeed(100);
+				leftWheel.forward();
+				rightWheel.forward();
+				Delay.msDelay(300);
+				leftWheel.stop();
+				rightWheel.stop();
 			} else if (dataExchange.getCommand() == 4) {
 				leftWheel.stop();
 				rightWheel.stop();
-				rightWheel.setSpeed(300);
-				leftWheel.setSpeed(300);
-				rightWheel.rotate(-200, true);
-				leftWheel.rotate(200, true);
+				rightWheel.setSpeed(100);
+				leftWheel.setSpeed(100);
+				rightWheel.backward();
+				Delay.msDelay(300);
+				rightWheel.stop();
 			} else if (dataExchange.getCommand() == 5) {
 				leftWheel.stop();
 				rightWheel.stop();
-				rightWheel.setSpeed(300);
-				leftWheel.setSpeed(300);
-				rightWheel.rotate(-200, true);
-				leftWheel.rotate(-200, true);
+				rightWheel.setSpeed(100);
+				leftWheel.setSpeed(100);
+				leftWheel.backward();
+				rightWheel.backward();
+				Delay.msDelay(300);
+				leftWheel.stop();
+				rightWheel.stop();
 			} else if (dataExchange.getCommand() == 6) {
 				leftWheel.stop();
 				rightWheel.stop();
 			} else if (dataExchange.getCommand() == 7) {
-				celeb.start();
+				leftWheel.stop();
+				rightWheel.stop();
+				celeb.music();
 			} else if (dataExchange.getCommand() == 8) {
 				leftWheel.stop();
 				rightWheel.stop();
@@ -133,8 +142,11 @@ public class Motor extends Thread {
 				rightWheel.stop();
 				rightWheel.rotateTo(180);
 				Delay.msDelay(300);
+				rightWheel.stop();
 			} else if (dataExchange.getCommand() == 9) {
-				celeb.start();
+				leftWheel.stop();
+				rightWheel.stop();
+				celeb.disco();
 			}
 		}
 		// Stop the motors
