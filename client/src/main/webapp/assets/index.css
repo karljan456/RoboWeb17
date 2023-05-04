@@ -536,8 +536,14 @@ input[type=range].styled-slider.slider-progress::-ms-fill-lower {
     max-width: 700px;
   }
   .controllers {
-    margin-right: 20px;
-    margin-left: -15px;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+    position: center;
+    display: center;
+    margin: 0 auto;
+    margin-left: 0%;
+    padding: 0 30px;
   }
 
 #chartContainer{
@@ -585,6 +591,9 @@ input[type=range].styled-slider.slider-progress::-ms-fill-lower {
 
   body{
     max-width: 400px;
+    margin: 0 auto;
+    display: center;
+    position: center;
   }
   .controllers {
     margin-right: 0;
