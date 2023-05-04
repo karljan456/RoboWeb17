@@ -26,7 +26,7 @@ public class ServerDataExchange extends Thread {
 
 	}
 	public void getData() {
-		while (true) {
+		while (dataExchange.getCommand() > 0) {
 			try {
 				urlSpeed = new URL("http://192.168.1.142:8080/rest/robot/getspeed");
 				conn = (HttpURLConnection) urlSpeed.openConnection();
@@ -42,7 +42,7 @@ public class ServerDataExchange extends Thread {
 			reader = new BufferedReader(inputReader);
 			try {
 				while ((speed = reader.readLine()) != null) {
-					System.out.println(speed);
+//					System.out.println(speed);
 					speedSettings = speed;
 				}
 				int userSpeedSetting = Integer.parseInt(speedSettings);
@@ -67,7 +67,7 @@ public class ServerDataExchange extends Thread {
 			reader = new BufferedReader(inputReader);
 			try {
 				while ((speed = reader.readLine()) != null) {
-					System.out.println(speed);
+//					System.out.println(speed);
 					speedSettings = speed;
 				}
 				int userSpeedSetting = Integer.parseInt(speedSettings);
@@ -92,7 +92,7 @@ public class ServerDataExchange extends Thread {
 			reader = new BufferedReader(inputReader);
 			try {
 				while ((speed = reader.readLine()) != null) {
-					System.out.println(speed);
+//					System.out.println(speed);
 					speedSettings = speed;
 				}
 				dataExchange.setCommand_name(speedSettings);;
@@ -101,6 +101,22 @@ public class ServerDataExchange extends Thread {
 				e.printStackTrace();
 			}
 		}
+//finalizing routine
+//sending counter of obstacle detection
+		try {
+			urlSpeed = new URL("http://192.168.1.142:8080/rest/robot/putdata/" + dataExchange.getCounter());
+			
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			conn = (HttpURLConnection) urlSpeed.openConnection();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		
 	}
 	
 
