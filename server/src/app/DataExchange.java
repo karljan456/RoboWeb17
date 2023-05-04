@@ -70,37 +70,5 @@ public class DataExchange {
 		
 	}
 
-	public int getStopButton() {
-		return stopButton;
-	}
-	
-	public void setStopButton(int stopButton) {
-		this.stopButton = stopButton;
-	}
-	
-	public int getDanceButton() {
-		return danceButton;
-	}
-	
-	public void setDanceButton(int danceButton) {
-		this.danceButton = danceButton;
-	}
-	
-	public int getLightsButton() {
-		return lightsButton;
-	}
-	
-	public void setLightsButton(int lightsButton) {
-		this.lightsButton = lightsButton;
-	}
-	
-	public int getMusicButton() {
-		return musicButton;
-	}
-	
-	public void setMusicButton(int musicButton) {
-		this.musicButton = musicButton;
-	}
-
 
 }
