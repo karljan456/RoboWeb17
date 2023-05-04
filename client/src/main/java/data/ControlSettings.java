@@ -12,15 +12,19 @@ public class ControlSettings {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private int command;
+	private String command_string;
 	
 	public ControlSettings() {
 		super();
 	}
 
-	public ControlSettings(int speed, int command, String song) {
+	
+	public ControlSettings(int command, String command_string) {
 		super();
 		this.command = command;
+		this.command_string = command_string;
 	}
+
 
 	public int getId() {
 		return id;
@@ -39,7 +43,14 @@ public class ControlSettings {
 		this.command = command;
 	}
 
-	
+	public String getCommand_string() {
+		return command_string;
+	}
+
+
+	public void setCommand_string(String command_string) {
+		this.command_string = command_string;
+	}
 	
 
 }
