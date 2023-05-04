@@ -1,5 +1,6 @@
 package services;
 
+import data.ControlSettings;
 import data.Param;
 import data.RoboData;
 
@@ -94,7 +95,7 @@ public class Robot {
 	@GET
 	@Path("/readall")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<RoboData> readAllPrey() {
+	public List<RoboData> readAllRobo() {
 		// Create an EntityManagerFactory with the settings from persistence.xml file
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("robot_project");
 		// And then EntityManager, which can manage the entities.
@@ -105,4 +106,36 @@ public class Robot {
 		List<RoboData> list = em.createQuery("select a from RoboData a").getResultList();
 		return list;
 	}
+	
+	@GET
+	@Path("/readallcs")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<ControlSettings> readAllcs() {
+		// Create an EntityManagerFactory with the settings from persistence.xml file
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("robot_project");
+		// And then EntityManager, which can manage the entities.
+		EntityManager em = emf.createEntityManager();
+
+		// Read all the rows from table prey. Here the Prey must start with capital,
+		// because class's name starts. This returns a List of Prey objects.
+		List<ControlSettings> list = em.createQuery("select a from ControlSettings a").getResultList();
+		return list;
+	}
+	
+	
+	@GET
+	@Path("/getobstacles")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<RoboData> getObstacles() {
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("robot_project");
+		
+		EntityManager em = emf.createEntityManager();
+
+		List<RoboData> obstacle = em.createQuery("select a.obstacle_detection from RoboData a").getResultList();
+		
+		return obstacle;
+		
+	}
+	
 }
