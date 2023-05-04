@@ -22,14 +22,13 @@ public class ServerDataExchange extends Thread {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		sendServerSpeedData("http://192.168.1.142:8080/rest/robot/getspeed");
-		sendServerCommandData("http://192.168.1.142:8080/rest/robot/getcommand");
-		sendServerCommandNameData("http://192.168.1.142:8080/rest/robot/getcommandname");
+		getData();
+
 	}
-	public void sendServerSpeedData(String url) {
+	public void getData() {
 		while (true) {
 			try {
-				urlSpeed = new URL(url);
+				urlSpeed = new URL("http://192.168.1.142:8080/rest/robot/getspeed");
 				conn = (HttpURLConnection) urlSpeed.openConnection();
 				if (conn == null) {
 					break;
@@ -52,13 +51,9 @@ public class ServerDataExchange extends Thread {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-	}
-	
-	public void sendServerCommandData(String url) {
-		while (true) {
+			// command read
 			try {
-				urlSpeed = new URL(url);
+				urlSpeed = new URL("http://192.168.1.142:8080/rest/robot/getcommand");
 				conn = (HttpURLConnection) urlSpeed.openConnection();
 				if (conn == null) {
 					break;
@@ -76,18 +71,14 @@ public class ServerDataExchange extends Thread {
 					speedSettings = speed;
 				}
 				int userSpeedSetting = Integer.parseInt(speedSettings);
-				dataExchange.setCommand(userSpeedSetting);;
+				dataExchange.setCommand(userSpeedSetting);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-	}
-	
-	public void sendServerCommandNameData(String url) {
-		while (true) {
+			//commandname read
 			try {
-				urlSpeed = new URL(url);
+				urlSpeed = new URL("http://192.168.1.142:8080/rest/robot/getcommandname");
 				conn = (HttpURLConnection) urlSpeed.openConnection();
 				if (conn == null) {
 					break;
@@ -104,11 +95,15 @@ public class ServerDataExchange extends Thread {
 					System.out.println(speed);
 					speedSettings = speed;
 				}
-				dataExchange.setCommand_name(speedSettings);
+				dataExchange.setCommand_name(speedSettings);;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
+	
+
+	
+
 }

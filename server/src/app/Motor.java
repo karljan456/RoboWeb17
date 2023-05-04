@@ -91,21 +91,29 @@ public class Motor extends Thread {
 			else if (dataExchange.getCommand() == 2) {
 				leftWheel.stop();
 				rightWheel.stop();
+				rightWheel.setSpeed(300);
+				leftWheel.setSpeed(300);
 				rightWheel.rotate(200, true);
 				leftWheel.rotate(-200, true);
 			} else if (dataExchange.getCommand() == 3) {
 				leftWheel.stop();
 				rightWheel.stop();
+				rightWheel.setSpeed(300);
+				leftWheel.setSpeed(300);
 				rightWheel.rotate(200, true);
 				leftWheel.rotate(200, true);
 			} else if (dataExchange.getCommand() == 4) {
 				leftWheel.stop();
 				rightWheel.stop();
+				rightWheel.setSpeed(300);
+				leftWheel.setSpeed(300);
 				rightWheel.rotate(-200, true);
 				leftWheel.rotate(200, true);
 			} else if (dataExchange.getCommand() == 5) {
 				leftWheel.stop();
 				rightWheel.stop();
+				rightWheel.setSpeed(300);
+				leftWheel.setSpeed(300);
 				rightWheel.rotate(-200, true);
 				leftWheel.rotate(-200, true);
 			} else if (dataExchange.getCommand() == 6) {
@@ -132,5 +140,6 @@ public class Motor extends Thread {
 		// Stop the motors
 		leftWheel.stop(true);
 		rightWheel.stop(true);
+		//send data to restful service with PathParam
 	}
 }
