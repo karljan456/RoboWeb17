@@ -138,4 +138,19 @@ public class Robot {
 		
 	}
 	
+	@GET
+	@Path("/readcs")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<ControlSettings> readCommandString() {
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("robot_project");
+		
+		EntityManager em = emf.createEntityManager();
+
+		List<ControlSettings> command = em.createQuery("select a.command_string from ControlSettings a").getResultList();
+		
+		return command;
+		
+	}
+	
 }
