@@ -72,8 +72,9 @@ public class Robot {
 	@Path("/getchartdata")
 	public List<Map<String, Object>> getChartData() {
 
-		RobotChart chart = new RobotChart(new String[][] { { "3 minutes", "1" }, { "5 minutes", "2" },
-				{ "6 minutes", "3" }, { "7 minutes", "4" }, { "2 minutes", "5" }, { "2 minutes", "6" } });
+		RobotChart chart = new RobotChart(new String[][] { { "1 lap", "3" }, {"2 lap", "6" }, 
+			{"3 lap", "1"}, {"4 lap", "4"}, {"5 lap", "7"}
+		});
 
 		return chart.getDataPoints();
 
