@@ -366,8 +366,19 @@ margin-bottom: 10px;
   flex-basis: 500px;
   position: relative;
   width: 40rem;
-  min-width: 20rem;
+  min-width: 452px !important;
 }
+
+#chartContainer{
+display: flex;
+margin-left: calc(50px + 40%);
+margin-top: 16rem;
+position: absolute !important;
+height: auto;
+width: 40%;
+min-width: 10rem;
+}
+
 
 #speed {
   display: center;
@@ -547,13 +558,6 @@ input[type=range].styled-slider.slider-progress::-ms-fill-lower {
   }
 
 #chartContainer{
-  position: relative;
-  order: 3;
-  width: 80%;
-  height: auto;
-}
-
-#chartContainer{
   margin-left: 10px;
   position: absolute !important;
   width: 80%;
@@ -611,7 +615,7 @@ input[type=range].styled-slider.slider-progress::-ms-fill-lower {
   margin-left: 10px;
   position: absolute !important;
   width: 80%;
-  min-width: 10rem;
+  min-width: 376px !important;
   margin-top: 1100px;
 }
 
