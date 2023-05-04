@@ -15,7 +15,7 @@ window.onload = function () {
             var data = JSON.parse(this.responseText);
             var dataPoints = [];
             for (var i = 0; i < data.length; i++) {
-                dataPoints.push({ x: data[i].x, y: data[i].y, label: data[i].x});
+                dataPoints.push({ x: data[i].x, y: data[i].y, label: data[i].y + " minutes"});
             }
             var chart = new CanvasJS.Chart("chartContainer", {
                 colorSet: "purpleShades",
@@ -27,7 +27,9 @@ window.onload = function () {
                     fontColor: "#b3b3f7",
                     fontFamily: '"Segoe UI", Arial, sans-serif',
 
-                },
+                }, toolTip:{
+                    content:" {x}: {y} minutes" ,
+                  },
                 data: [{
                     type: "doughnut",
                     startAngle: 60,

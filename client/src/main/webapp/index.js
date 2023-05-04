@@ -1,5 +1,6 @@
 const slider = document.getElementById("speed");
 const speedText = document.getElementById("currentSpeed");
+let obstacle = document.getElementById("obstacle");
 
 
 speedText.innerHTML = "Current Speed: " + slider.value + " degrees/sec";
@@ -50,3 +51,20 @@ for (let e of document.querySelectorAll('input[type="range"].slider-progress')) 
 }
 
 
+// Getting obstacle data
+var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+            var data = JSON.parse(this.responseText);
+
+            const obstacleData = data[data.length - 1];
+
+            console.log(obstacleData);
+
+            obstacle.innerHTML = "Obstacle detected: " + obstacleData + " times";
+            
+        }
+    };
+    xhttp.open("GET", "../rest/robot/getobstacles", true);
+    xhttp.send();

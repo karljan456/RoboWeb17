@@ -1,7 +1,7 @@
 package services;
 
 import java.sql.Time;
-
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -35,11 +35,20 @@ public class data {
 		    em.getTransaction().commit();		
 		return "Data "+ obstacle_detection +" added";
 	}
+	
 	@GET
-	@Path("/robo2")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String newKid2() {
-		return "Data " +" added";
+	@Path("/readall")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<RoboData> readAllPrey() {
+	//Create an EntityManagerFactory with the settings from persistence.xml file
+		EntityManagerFactory emf=Persistence.createEntityManagerFactory("robot_project");
+		//And then EntityManager, which can manage the entities.
+		EntityManager em=emf.createEntityManager();
+		
+		//Read all the rows from table prey. Here the Prey must start with capital, 
+		//because class's name starts. This returns a List of Prey objects.
+		List<RoboData> list=em.createQuery("select a from RoboData a").getResultList();
+		return list;
 	}
 
 }
