@@ -5,11 +5,13 @@ import data.Param;
 import data.RoboData;
 
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -25,6 +27,8 @@ import data.RobotChart;
 
 @Path("/robot")
 public class Robot {
+	
+	String data;
 
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("robot_project");
 
@@ -46,10 +50,28 @@ public class Robot {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/writecommand")
-	public void writeCommand(@FormParam("command") String command, @FormParam("name") String name) {
+	public void writeCommand(@FormParam("command") String command) {
 		int cmd = Integer.valueOf(command);
 		Param.command = cmd;
-		Param.command_name = name;
+		
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("robot_project");
+		
+		EntityManager em = emf.createEntityManager();
+
+		List<ControlSettings> commando = em.createQuery("select a.command_string from ControlSettings a WHERE a.id = " + cmd).getResultList();
+		
+		Param.command_name = commando.toString();
+		
+		if (cmd > 1) {
+			try {
+				TimeUnit.SECONDS.sleep(3);
+				Param.command = 99;
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
 	}
 
@@ -59,11 +81,26 @@ public class Robot {
 	public int getCommand() {
 		return Param.command;
 	}
+	
+	@GET
+	@Path("/setcommandname")
+	public void setCommandName() {
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("robot_project");
+		
+		EntityManager em = emf.createEntityManager();
+
+		List<ControlSettings> command = em.createQuery("select a.command_string from ControlSettings a WHERE a.id = 5").getResultList();
+		
+		Param.command_name = command.toString();
+		
+	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/getcommandname")
 	public String getCommandName() {
+		
 		return Param.command_name;
 	}
 
@@ -78,50 +115,19 @@ public class Robot {
 		return chart.getDataPoints();
 
 	}
-
+	
+	
 	@GET
-	@Path("/robo")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String newKid(@QueryParam("obstacle_detection") int obstacle_detection) {
-
-		RoboData robo = new RoboData(obstacle_detection);
+	@Path("/putdata/{par}")
+	public void putData(@PathParam("par") int ob) {
+		
+		RoboData robo = new RoboData(ob);
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(robo);
 		em.getTransaction().commit();
-		return "Data " + obstacle_detection + " added";
+		
 	}
-
-	@GET
-	@Path("/readall")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<RoboData> readAllRobo() {
-		// Create an EntityManagerFactory with the settings from persistence.xml file
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("robot_project");
-		// And then EntityManager, which can manage the entities.
-		EntityManager em = emf.createEntityManager();
-
-		// Read all the rows from table prey. Here the Prey must start with capital,
-		// because class's name starts. This returns a List of Prey objects.
-		List<RoboData> list = em.createQuery("select a from RoboData a").getResultList();
-		return list;
-	}
-	
-	@GET
-	@Path("/readallcs")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<ControlSettings> readAllcs() {
-		// Create an EntityManagerFactory with the settings from persistence.xml file
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("robot_project");
-		// And then EntityManager, which can manage the entities.
-		EntityManager em = emf.createEntityManager();
-
-		// Read all the rows from table prey. Here the Prey must start with capital,
-		// because class's name starts. This returns a List of Prey objects.
-		List<ControlSettings> list = em.createQuery("select a from ControlSettings a").getResultList();
-		return list;
-	}
-	
 	
 	@GET
 	@Path("/getobstacles")
@@ -138,19 +144,6 @@ public class Robot {
 		
 	}
 	
-	@GET
-	@Path("/readcs")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<ControlSettings> readCommandString() {
-		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("robot_project");
-		
-		EntityManager em = emf.createEntityManager();
 
-		List<ControlSettings> command = em.createQuery("select a.command_string from ControlSettings a").getResultList();
-		
-		return command;
-		
-	}
 	
 }
