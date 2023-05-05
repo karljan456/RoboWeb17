@@ -104,7 +104,7 @@ public class ServerDataExchange extends Thread {
 //finalizing routine
 //sending counter of obstacle detection
 		try {
-			urlSpeed = new URL("http://192.168.1.160:8080/rest/robot/putdata/" + dataExchange.getCounter());
+			urlSpeed = new URL("http://192.168.1.142:8080/rest/robot/putdata/" + dataExchange.getCounter());
 			
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
