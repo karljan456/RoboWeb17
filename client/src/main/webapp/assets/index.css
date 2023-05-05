@@ -560,8 +560,8 @@ input[type=range].styled-slider.slider-progress::-ms-fill-lower {
 #chartContainer{
   margin-left: 10px;
   position: absolute !important;
-  width: 80%;
-  min-width: 10rem;
+  width: 100%;
+  min-width: 20rem;
   margin-top: 930px;
 }
 

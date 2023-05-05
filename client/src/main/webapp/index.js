@@ -23,10 +23,10 @@ slider.addEventListener("input", function () {
     xmlhttp.send(data);
 });
 
-function sendParameters(command, name) {
+function sendParameters(command) {
     var xmlhttp = new XMLHttpRequest();
     var url = "../rest/robot/writecommand";
-    var data = "command=" + command + "&name=" + name;
+    var data = "command=" + command;
 
     xmlhttp.open("POST", url, true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -62,7 +62,7 @@ var xhttp = new XMLHttpRequest();
 
             console.log(obstacleData);
 
-            obstacle.innerHTML = "Obstacle detected: " + obstacleData + " times";
+            obstacle.innerHTML = "Obstacle detected last time: " + obstacleData + " times";
             
         }
     };

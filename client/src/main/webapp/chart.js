@@ -15,7 +15,7 @@ window.onload = function () {
             var data = JSON.parse(this.responseText);
             var dataPoints = [];
             for (var i = 0; i < data.length; i++) {
-                dataPoints.push({ x: data[i].x, y: data[i].y, label: data[i].y + " minutes"});
+                dataPoints.push({ x: data[i].x, y: data[i].y, label: data[i].y + " times"});
             }
             var chart = new CanvasJS.Chart("chartContainer", {
                 colorSet: "purpleShades",
@@ -23,12 +23,12 @@ window.onload = function () {
                 animationEnabled: true,
                 animationDuration: 600,
                 title: {
-                    text: "Minutes to complete the track per lap",
+                    text: "Obstacles detected per lap",
                     fontColor: "#b3b3f7",
                     fontFamily: '"Segoe UI", Arial, sans-serif',
 
                 }, toolTip:{
-                    content:" {x}: {y} minutes" ,
+                    content:" {x} lap: {y} times" ,
                   },
                 data: [{
                     type: "doughnut",

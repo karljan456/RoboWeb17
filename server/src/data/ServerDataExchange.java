@@ -28,7 +28,7 @@ public class ServerDataExchange extends Thread {
 	public void getData() {
 		while (dataExchange.getCommand() > 0) {
 			try {
-				urlSpeed = new URL("http://192.168.1.142:8080/rest/robot/getspeed");
+				urlSpeed = new URL("http://192.168.1.160:8080/rest/robot/getspeed");
 				conn = (HttpURLConnection) urlSpeed.openConnection();
 				if (conn == null) {
 					break;
@@ -53,7 +53,7 @@ public class ServerDataExchange extends Thread {
 			}
 			// command read
 			try {
-				urlSpeed = new URL("http://192.168.1.142:8080/rest/robot/getcommand");
+				urlSpeed = new URL("http://192.168.1.160:8080/rest/robot/getcommand");
 				conn = (HttpURLConnection) urlSpeed.openConnection();
 				if (conn == null) {
 					break;
@@ -78,7 +78,7 @@ public class ServerDataExchange extends Thread {
 			}
 			//commandname read
 			try {
-				urlSpeed = new URL("http://192.168.1.142:8080/rest/robot/getcommandname");
+				urlSpeed = new URL("http://192.168.1.160:8080/rest/robot/getcommandname");
 				conn = (HttpURLConnection) urlSpeed.openConnection();
 				if (conn == null) {
 					break;

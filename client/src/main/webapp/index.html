@@ -30,29 +30,29 @@
 
             <h2 class="navigation-speed-title">Navigation</h2><br>
             <div id="buttons">
-                <button onclick="sendParameters(this.value, 'forward')" class="arrow-button" id="btn_up" value="3"><img
+                <button onclick="sendParameters(this.value)" class="arrow-button" id="btn_up" value="3"><img
                         src="assets/icons/arrow-up.svg" alt="Up arrow"></button>
                 <div class="middle">
-                    <button onclick="sendParameters(this.value, 'left')" class="arrow-button" id="btn_left" value="2"><img
+                    <button onclick="sendParameters(this.value)" class="arrow-button" id="btn_left" value="2"><img
                             src="assets/icons/arrow-left.svg" alt="Left arrow"></button>
-                    <button onclick="sendParameters( this.value, 'right')" class="arrow-button" id="btn_right" value="4"><img
+                    <button onclick="sendParameters( this.value)" class="arrow-button" id="btn_right" value="4"><img
                             src="assets/icons/arrow-right.svg" alt="Right arrow"></button>
                 </div>
-                <button onclick="sendParameters(this.value, 'down')" class="arrow-button" id="btn_down" value="5"><img
+                <button onclick="sendParameters(this.value)" class="arrow-button" id="btn_down" value="5"><img
                         src="assets/icons/arrow-down.svg" alt="Down arrow"></button><br>
             </div>
 
             <div class="btn">
                 <form method="post">
                     <div class="big-buttons">
-                        <button onclick="sendParameters(this.value, 'lights')" id="lightsButton" value="9">Flash
-                        Lights</button><br>
-                        <button onclick="sendParameters(this.value, 'dance')" id="danceButton" value="8">Dance</button><br>
-                        <button onclick="sendParameters(this.value, 'pause')" id="pauseButton" value="6">Pause</button><br>
-                        <button onclick="sendParameters(this.value, 'continue')" id="continueButton" value="1">Continue</button><br>
-                        <button onclick="sendParameters(this.value, 'play_music')" id="playButton" value="7">Play
-                        Music</button><br>
-                    <button onclick="sendParameters(this.value, 'stop')" id="stopButton" value="0">Stop</button>
+                        <button onclick="sendParameters(this.value)" id="lightsButton" value="9">Flash
+                            Lights</button><br>
+                        <button onclick="sendParameters(this.value)" id="danceButton" value="8">Dance</button><br>
+                        <button onclick="sendParameters(this.value)" id="pauseButton" value="6">Pause</button><br>
+                        <button onclick="sendParameters(this.value)" id="continueButton" value="1">Continue</button><br>
+                        <button onclick="sendParameters(this.value)" id="playButton" value="7">Play
+                            Music</button><br>
+                        <button onclick="sendParameters(this.value, 'stop')" id="stopButton" value="0">Stop</button>
                     </div>
                 </form>
             </div>
@@ -62,14 +62,10 @@
         <div id="chartContainer"></div>
 
         <div class="stats">
-            <h2 class="header-stats">Time Stats</h2><br>
-            <ul>
-                <li>Time spent outside of track: X seconds</li><br>
-            </ul>
 
             <h2 class="header-stats">Obstacle Detection</h2><br>
             <ul>
-                <li id="obstacle" >Obstacle detected: X times</li>
+                <li id="obstacle"></li>
             </ul>
         </div>
 
