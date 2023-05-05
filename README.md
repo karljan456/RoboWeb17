@@ -9,6 +9,7 @@ Andrejs Kavalans - responsible for navigation buttons
 Shreya Khentani - responsible for the database
 Marika Duhhanina - responsible for web and mobile responsiveness, UI
 
+
 Our team has used JavaScript and Ajax to send the data to RESTFul services and then the robot requests data from the RESTFul services, while data is stored in MySql database. Robot behaves according to speed parameter configuration and pressed buttons that have according functionality and names stored in the database. The buttons on the page work in a way that every button has a number value, and when the button is pressed, the database receives the number and sends the command to the robot.  Additionally, we used MySQL database to store the data, such as statistics, and show it on the webpage. One of the achievements that we have is the working chart, which was implemented with the CanvasJS free library. 
 
 
