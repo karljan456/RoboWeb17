@@ -103,23 +103,23 @@ public class ServerDataExchange extends Thread {
 		}
 //finalizing routine
 //sending counter of obstacle detection
-		try {
-			urlSpeed = new URL("http://192.168.1.142:8080/rest/robot/putdata/" + dataExchange.getCounter());
-			
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			conn = (HttpURLConnection) urlSpeed.openConnection();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
+		
+		
+		while (true) {
+			try {
+				urlSpeed = new URL("http://192.168.1.142:8080/rest/robot/putdata/" + dataExchange.getCounter());
+				conn = (HttpURLConnection) urlSpeed.openConnection();
+				if (conn == null) {
+					break;
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
 	}
 	
-
+	}
 	
 
 }
