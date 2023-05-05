@@ -1,16 +1,5 @@
 package services;
 
-import data.ControlSettings;
-import data.Param;
-import data.RoboData;
-
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.core.MediaType;
-
-import com.google.appengine.repackaged.com.google.gson.Gson;
-
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -22,9 +11,14 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 
+import data.ControlSettings;
+import data.Param;
+import data.RoboData;
 import data.RobotChart;
 
 @Path("/robot")
@@ -65,7 +59,7 @@ public class Robot {
 		
 		if (cmd > 1) {
 			try {
-				TimeUnit.SECONDS.sleep(3);
+				TimeUnit.SECONDS.sleep(2);
 				Param.command = 99;
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
