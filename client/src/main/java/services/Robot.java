@@ -65,7 +65,7 @@ public class Robot {
 		
 		if (cmd > 1) {
 			try {
-				TimeUnit.SECONDS.sleep(3);
+				TimeUnit.SECONDS.sleep(2);
 				Param.command = 99;
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
