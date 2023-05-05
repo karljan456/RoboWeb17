@@ -8,6 +8,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
+import com.google.appengine.repackaged.com.google.gson.Gson;
+
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
@@ -27,8 +29,6 @@ import data.RobotChart;
 
 @Path("/robot")
 public class Robot {
-	
-	String data;
 
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("robot_project");
 
@@ -59,13 +59,13 @@ public class Robot {
 		
 		EntityManager em = emf.createEntityManager();
 
-		List<ControlSettings> commando = em.createQuery("select a.command_string from ControlSettings a WHERE a.id = " + cmd).getResultList();
+		List<ControlSettings> commando = em.createQuery("select a.command_string from ControlSettings a WHERE a.command = " + cmd).getResultList();
 		
 		Param.command_name = commando.toString();
 		
 		if (cmd > 1) {
 			try {
-				TimeUnit.SECONDS.sleep(3);
+				TimeUnit.SECONDS.sleep(2);
 				Param.command = 99;
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -81,20 +81,6 @@ public class Robot {
 	public int getCommand() {
 		return Param.command;
 	}
-	
-	@GET
-	@Path("/setcommandname")
-	public void setCommandName() {
-		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("robot_project");
-		
-		EntityManager em = emf.createEntityManager();
-
-		List<ControlSettings> command = em.createQuery("select a.command_string from ControlSettings a WHERE a.id = 5").getResultList();
-		
-		Param.command_name = command.toString();
-		
-	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -108,14 +94,26 @@ public class Robot {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/getchartdata")
 	public List<Map<String, Object>> getChartData() {
+	    EntityManagerFactory emf = Persistence.createEntityManagerFactory("robot_project");
+	    EntityManager em = emf.createEntityManager();
 
-		RobotChart chart = new RobotChart(new String[][] { { "1 lap", "3" }, {"2 lap", "6" }, 
-			{"3 lap", "1"}, {"4 lap", "4"}, {"5 lap", "7"}
-		});
+	    List<Object[]> data = em.createQuery("select a.obstacle_detection, a.id from RoboData a order by a.id asc")
+	                            .getResultList();
 
-		return chart.getDataPoints();
+	    String[][] chartData = new String[data.size()][2];
+	    int i = 0;
+	    for (Object[] row : data) {
+	        chartData[i][0] = row[1].toString(); 
+	        chartData[i][1] = row[0].toString(); 
+	        i++;
+	    }
 
+	    RobotChart chart = new RobotChart(chartData);
+
+
+	    return chart.getDataPoints();
 	}
+
 	
 	
 	@GET
