@@ -4,9 +4,13 @@ Webservices Robo Project
 Team 11, Robot 17
 
 Team members:
+
 Edvin Jansson - responsible for the chart, slider
+
 Andrejs Kavalans - responsible for navigation buttons
+
 Shreya Khentani - responsible for the database
+
 Marika Duhhanina - responsible for web and mobile responsiveness, UI
 
 
