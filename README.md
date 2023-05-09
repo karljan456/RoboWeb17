@@ -32,6 +32,7 @@ Dance,
 Play random music,
 Pause the Program,
 Continue the Program.
+
 This is the webpage menu to control the Lego robot 
 
 ![robo_project_ui](https://github.com/karljan456/RoboWeb17/assets/75903246/eda5dc40-ead5-41f2-91b6-4db01a913575)
